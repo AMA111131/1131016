@@ -1,0 +1,10 @@
+import requests
+from bs4 import BeautifulSoup
+url='https://2023ntcu.ntcu.edu.tw/'
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+html = requests.get(url, headers=headers)
+html.encoding="utf-8"
+
+keyword="臺中"
+soup = BeautifulSoup(html.text, 'html.parser')
+print(f"關鍵字 '{keyword}' 在網頁中出現了",soup.text.count(keyword),"次。")
